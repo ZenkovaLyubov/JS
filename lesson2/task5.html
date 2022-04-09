@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        /*Задача 5
+        Необходимо реализовать функцию, которая будет принимать первым аргументом
+        целое положительное число, в следующих трех аргументах функция принимает слова
+        в разных склонениях.
+        Функция должна возвращать одно из трех переданных в параметры слов подходящее
+        под число, которое передано первым аргументом.
+
+        Пример:
+        console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+        console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+        console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+        Функция должна работать с любым словом и любым целым положительным числом.
+        Все аргументы, которые будут передаваться функции будут верны.*/
+        console.log('Задача 5');
+        const applesNumber = Number(prompt('Укажите число предметов:'));
+        const one = prompt('Укажите название предмета в нужном склонении для количества один:');
+        const two = prompt('Укажите название предмета в нужном склонении для количества два:');
+        const five = prompt('Укажите название предмета в нужном склонении для количества пять:');
+
+        function declinationOfNumber(count, one, two, five) {
+            if (one == "" && two == "" && five == "") {
+                one = 'яблоко';
+                two = 'яблока';
+                five = 'яблок';
+
+            }
+
+            let num = count % 100;
+            if (num >= 5 && num <= 20) {
+
+                return five;
+            }
+            else {
+                num = num % 10;
+                if (num === 1) {
+                    return one;
+                }
+                else if (num === 2 || num === 3 || num === 4) {
+                    return two;
+                }
+                else {
+                    return five;
+                }
+            }
+
+        }
+
+        const word = declinationOfNumber(applesNumber, one, two, five);
+
+        console.log(`У меня есть ${applesNumber} ${word}.`);
+    </script>
+</body>
+
+</html>
