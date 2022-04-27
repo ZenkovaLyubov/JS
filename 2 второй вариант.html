@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--
+Дополнительное задание.
+
+Дан макет сайта
+https://www.figma.com/file/SbfOi2i4S1pIs0G6uOLPCx/shop-(Copy)?node-id=73%3A140м 
+
+В нем представлены товары, добавленные в корзину 
+
+Вам необходимо создать объект cart  в котором будет 
+1. ссылка на картинку
+2. Название товара (MANGO  PEOPLE  T-SHIRT)
+3. цена (Price: $300 	) 
+4. цвет (Color: Red)
+5. Размер (Size: Xl	)
+6. Количество (Quantity:2)
+
+Отобразить на странице 2 товара добавленных в корзину
+-->
+    <div class="product_box_cart">
+
+    </div>
+
+    <script>
+        "use strict";
+        const products = [{
+            imgSrc: "img/catalog_img5.png",
+            name: 'MANGO PEOPLE T-SHIRT 1',
+            price: 300,
+            color: 'Red',
+            size: 'XL',
+            quantity: 2,
+        },
+        {
+            imgSrc: "img/catalog_img6.png",
+            name: 'MANGO PEOPLE T-SHIRT 2',
+            price: 302,
+            color: 'Green',
+            size: 'XXL',
+            quantity: 3,
+
+        }];
+        const productContent = document.querySelector('.product_box_cart');
+
+        function productDisplay(el) {
+            return `<div class="product_card_cart">
+
+        <img src="${el.imgSrc}" alt="product" class="img_product_cart">
+
+        <div class="info_block_cart">
+            <div class="block_heading_cart">
+                <h2 class="info_heading_cart">
+                    ${el.name}
+                </h2>
+                <img src="img/close.png" alt="" class="close_cart">
+            </div>
+            <div class="text_block_info_cart">
+                <p class="text_product_cart">Price: <span class="pink_cart">$${el.price}</span></p>
+                <p class="text_product_cart">Color: ${el.color}</p>
+                <p class="text_product_cart">Size: ${el.size}</p>
+
+                <p class="text_product_cart">Quantity: <span class="quantity">${el.quantity}</span> </p>
+
+            </div>
+        </div>
+        </div>`;
+        };
+
+        products.forEach(element => {
+            productContent.insertAdjacentHTML('beforeend', productDisplay(element));
+        });  
+    </script>
+</body>
+
+</html>
