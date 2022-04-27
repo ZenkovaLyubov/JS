@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--
+Дополнительное задание.
+
+Дан макет сайта
+https://www.figma.com/file/SbfOi2i4S1pIs0G6uOLPCx/shop-(Copy)?node-id=73%3A140м 
+
+В нем представлены товары, добавленные в корзину 
+
+Вам необходимо создать объект cart  в котором будет 
+1. ссылка на картинку
+2. Название товара (MANGO  PEOPLE  T-SHIRT)
+3. цена (Price: $300 	) 
+4. цвет (Color: Red)
+5. Размер (Size: Xl	)
+6. Количество (Quantity:2)
+
+Отобразить на странице 2 товара добавленных в корзину
+-->
+    <div class="product_box_cart">
+
+    </div>
+
+    <script>
+        "use strict";
+        const products = [{
+            imgSrc: "img/catalog_img5.png",
+            name: 'MANGO PEOPLE T-SHIRT 1',
+            price: 300,
+            color: 'Red',
+            size: 'XL',
+            quantity: 2,
+        },
+        {
+            imgSrc: "img/catalog_img6.png",
+            name: 'MANGO PEOPLE T-SHIRT 2',
+            price: 302,
+            color: 'Green',
+            size: 'XXL',
+            quantity: 3,
+
+        }];
+        const productContent = document.querySelector('.product_box_cart');
+        function createProduct(recipeProduct) {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product_card_cart');
+            productContent.append(productCard);
+
+            const productImg = document.createElement('img');
+            productImg.src = recipeProduct.imgSrc;
+            productImg.classList.add('img_product_cart');
+            productCard.append(productImg);
+
+            const infoBlock = document.createElement('div');
+            infoBlock.classList.add('info_block_cart');
+            productCard.append(infoBlock);
+
+            const blockHeading = document.createElement('div');
+            blockHeading.classList.add('block_heading_cart');
+            infoBlock.append(blockHeading);
+
+            const infoHeading = document.createElement('h2');
+            infoHeading.classList.add('info_heading_cart');
+            infoHeading.textContent = recipeProduct.name;
+            blockHeading.append(infoHeading);
+
+            const closeCard = document.createElement('img');
+            closeCard.src = 'img/close.png';
+            closeCard.classList.add('close_cart');
+            blockHeading.append(closeCard);
+
+            const textBlockInfo = document.createElement('div');
+            textBlockInfo.classList.add('text_block_info_cart');
+            infoBlock.append(textBlockInfo);
+
+            const textProductPrice = document.createElement('p');
+            textProductPrice.classList.add('text_product_cart');
+            textProductPrice.textContent = 'Price: ';
+            textBlockInfo.append(textProductPrice);
+
+            const pinkSpan = document.createElement('span');
+            pinkSpan.classList.add('pink_cart');
+            pinkSpan.textContent = `$${recipeProduct.price}`;
+            textProductPrice.append(pinkSpan);
+
+            const textProductColor = document.createElement('p');
+            textProductColor.classList.add('text_product_cart');
+            textProductColor.textContent = `Color: ${recipeProduct.color}`;
+            textBlockInfo.append(textProductColor);
+
+            const textProductSize = document.createElement('p');
+            textProductSize.classList.add('text_product_cart');
+            textProductSize.textContent = `Size: ${recipeProduct.size}`;
+            textBlockInfo.append(textProductSize);
+
+            const textProductQuantity = document.createElement('p');
+            textProductQuantity.classList.add('text_product_cart');
+            textProductQuantity.textContent = `Quantity:`;
+            textBlockInfo.append(textProductQuantity);
+
+            const quantity = document.createElement('span');
+            quantity.classList.add('quantity');
+            quantity.textContent = recipeProduct.quantity;
+            textProductQuantity.append(quantity);
+
+
+
+            return productCard;
+        }
+        products.forEach(element => {
+            productContent.append(createProduct(element));
+        });  
+    </script>
+</body>
+
+</html>
